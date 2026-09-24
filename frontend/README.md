@@ -1,16 +1,145 @@
-# React + Vite
+# InfraWatch
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Infrastructure Monitoring Dashboard
 
-Currently, two official plugins are available:
+InfraWatch is a full-stack infrastructure monitoring system that collects server performance metrics and displays them through a web-based monitoring dashboard.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The system monitors:
 
-## React Compiler
+- CPU usage
+- Memory usage
+- Disk usage
+- Overall system health
+- Active alerts
+- Monitoring history
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+When resource usage reaches configured thresholds, InfraWatch generates alerts with different severity levels such as `WARNING` and `CRITICAL`.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Features
+
+## 📊 Real-Time Monitoring
+
+InfraWatch automatically collects server performance metrics and stores them in MongoDB.
+
+The monitored metrics include:
+
+- CPU Usage
+- Memory Usage
+- Disk Usage
+- Health Status
+- Timestamp
+
+## 🚨 Alert Monitoring
+
+The system detects high resource usage and creates alerts.
+
+Alert severity levels include:
+
+- 🟠 WARNING
+- 🔴 CRITICAL
+
+Active alerts are displayed on the dashboard with:
+
+- Alert type
+- Severity
+- Message
+- Current value
+- Timestamp
+
+## 📈 Monitoring History
+
+The dashboard displays historical monitoring data using interactive line charts.
+
+The chart shows:
+
+- CPU usage
+- Memory usage
+- Disk usage
+
+## 🔄 Automatic Refresh
+
+The React dashboard automatically refreshes monitoring information every 30 seconds.
+
+## 🖥️ Web Dashboard
+
+The dashboard provides a simple interface for viewing the current condition of the monitored server.
+
+The dashboard displays:
+
+- Current CPU usage
+- Current memory usage
+- Current disk usage
+- System health
+- Monitoring history
+- Active alerts
+
+---
+
+# Technologies Used
+
+## Backend
+
+- Java
+- Spring Boot
+- Spring Web
+- Spring Data MongoDB
+- Maven
+
+## Frontend
+
+- React
+- JavaScript
+- Vite
+- Recharts
+- HTML
+- CSS
+
+## Database
+
+- MongoDB
+
+## Containerization
+
+- Docker
+- Docker Compose
+
+## Development Tools
+
+- Visual Studio Code
+- Git
+- GitHub
+- PowerShell
+
+---
+
+# System Architecture
+
+```text
+                    ┌──────────────────────┐
+                    │     React Frontend   │
+                    │                      │
+                    │  Monitoring Dashboard│
+                    │      + Recharts      │
+                    └──────────┬───────────┘
+                               │
+                               │ REST API
+                               ▼
+                    ┌──────────────────────┐
+                    │   Spring Boot API    │
+                    │                      │
+                    │ Controllers          │
+                    │ Services             │
+                    │ Monitoring Scheduler │
+                    └──────────┬───────────┘
+                               │
+                               │ Spring Data MongoDB
+                               ▼
+                    ┌──────────────────────┐
+                    │       MongoDB        │
+                    │                      │
+                    │ Monitoring Metrics   │
+                    │ Alerts               │
+                    │ Server Information   │
+                    └──────────────────────┘
