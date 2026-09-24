@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: infrawatch
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/infrawatch
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
